@@ -46,3 +46,6 @@ export const getTotalCartQuantity = (state) => {
 export const getTotalCartPrice = (state) => {
   return state.cart.cart.reduce((total, item) => total + item.totalPrice, 0);
 };
+export const getCart = (state) => {
+  return state.cart.cart;
+};
