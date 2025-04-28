@@ -10,6 +10,7 @@ import {
 } from "../../utils/helpers";
 import { useFetcher, useLoaderData } from "react-router-dom";
 import OrderItem from "./OrderItem";
+import UpdateOrder from "./UpdateOrder";
 function Order() {
   const order = useLoaderData();
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
@@ -30,7 +31,6 @@ function Order() {
     }
   }, [fetcher]);
 
-  console.log(fetcher.data);
   return (
     <div className="px-4 py-6 space-y-8">
       <div className="flex items-center justify-between flex-wrap gap-2">
@@ -86,6 +86,7 @@ function Order() {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+      {!priority && <UpdateOrder order={order} />}
     </div>
   );
 }
